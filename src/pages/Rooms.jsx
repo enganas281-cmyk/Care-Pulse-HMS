@@ -1,6 +1,6 @@
 import ModulePage from "../components/ModulePage.jsx";
 import StatusBadge from "../components/ui/StatusBadge.jsx";
-import { rooms } from "../data/mockData.js";
+import useFetch from "../utils/useFetch.js";
 
 const columns = [
   { key: "id", label: "Room" },
@@ -12,6 +12,9 @@ const columns = [
 ];
 
 export default function Rooms() {
+  const { data: rooms, loading: loadingrooms } = useFetch('/rooms');
+  if (loadingrooms) return <div className="p-8 text-slate-500">Loading data...</div>;
+
   return (
     <ModulePage
       action="Add Room"

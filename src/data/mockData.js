@@ -225,3 +225,44 @@ export const medicalRecords = [
   { id: "MR-9003", patient: "Sofia Garcia", type: "Prenatal chart", author: "Dr. Hana Noor", updated: "2026-06-01", status: "Completed" },
   { id: "MR-9004", patient: "Noah Brown", type: "Observation note", author: "Dr. Elias Mwangi", updated: "2026-06-02", status: "Collected" },
 ];
+
+export const users = [
+  { id: "USR-001", name: "Admin Manager", email: "admin@carepulse.test", role: "Admin", department: "Administration", status: "Active", password: "admin123" },
+  { id: "USR-002", name: "Dr. Priya Shah", email: "doctor@carepulse.test", role: "Doctor", department: "Cardiology", status: "Active", password: "doctor123" },
+  { id: "USR-003", name: "Maya Okafor", email: "nurse@carepulse.test", role: "Nurse", department: "Emergency", status: "Active", password: "nurse123" },
+  { id: "USR-004", name: "Rina Frontdesk", email: "reception@carepulse.test", role: "Receptionist", department: "Front Desk", status: "Active", password: "reception123" },
+  { id: "USR-005", name: "Omar Ledger", email: "accountant@carepulse.test", role: "Accountant", department: "Finance", status: "Active", password: "accountant123" },
+  { id: "USR-006", name: "Amina Yusuf", email: "patient@carepulse.test", role: "Patient", department: "Portal", status: "Active", password: "patient123" },
+];
+
+export const prescriptions = [
+  { id: "RX-1001", patient: "Amina Yusuf", medication: "Amlodipine 5mg", dosage: "Once daily", doctor: "Dr. Priya Shah", status: "Active" },
+  { id: "RX-1002", patient: "Marcus Lee", medication: "Azithromycin 500mg", dosage: "Daily for 3 days", doctor: "Dr. Liam Carter", status: "Completed" },
+  { id: "RX-1003", patient: "Noah Brown", medication: "Salbutamol inhaler", dosage: "2 puffs as needed", doctor: "Dr. Elias Mwangi", status: "Active" },
+];
+
+export const vitalSigns = [
+  { id: "VIT-101", patient: "Marcus Lee", ward: "Respiratory", bp: "142/88", pulse: 104, temperature: 38.4, status: "Critical" },
+  { id: "VIT-102", patient: "Sofia Garcia", ward: "Maternity", bp: "118/74", pulse: 82, temperature: 36.9, status: "Stable" },
+  { id: "VIT-103", patient: "Noah Brown", ward: "Pediatrics", bp: "102/68", pulse: 96, temperature: 37.2, status: "Observation" },
+];
+
+export const payments = [
+  { id: "PAY-801", invoice: "INV-2210", patient: "Amina Yusuf", amount: 420, method: "Card", status: "Paid" },
+  { id: "PAY-802", invoice: "INV-2211", patient: "Marcus Lee", amount: 1250, method: "Insurance", status: "Pending" },
+  { id: "PAY-803", invoice: "INV-2213", patient: "Grace Kim", amount: 6400, method: "Insurance", status: "Insurance" },
+];
+
+export const notifications = [
+  { id: "NOT-01", title: "Critical lab result", audience: "Doctor", priority: "Urgent", status: "Unread" },
+  { id: "NOT-02", title: "Ward handover due", audience: "Nurse", priority: "Routine", status: "Unread" },
+  { id: "NOT-03", title: "Invoice payment posted", audience: "Accountant", priority: "Routine", status: "Read" },
+  { id: "NOT-04", title: "Appointment confirmed", audience: "Patient", priority: "Routine", status: "Unread" },
+];
+
+export const activityLogs = [
+  { id: "LOG-001", user: "Admin Manager", action: "Updated hospital settings", module: "Settings", time: "08:12", status: "Completed" },
+  { id: "LOG-002", user: "Dr. Priya Shah", action: "Reviewed patient record", module: "Records", time: "09:34", status: "Completed" },
+  { id: "LOG-003", user: "Rina Frontdesk", action: "Booked appointment", module: "Appointments", time: "10:05", status: "Completed" },
+  { id: "LOG-004", user: "Omar Ledger", action: "Processed invoice", module: "Billing", time: "11:18", status: "Processing" },
+];

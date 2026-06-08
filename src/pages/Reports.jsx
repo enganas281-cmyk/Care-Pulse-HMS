@@ -1,9 +1,13 @@
 import { useState } from "react";
 import { BarChart3, Download, TrendingUp } from "lucide-react";
 import PageHeader from "../components/ui/PageHeader.jsx";
-import { departments, reportSeries } from "../data/mockData.js";
+import useFetch from "../utils/useFetch.js";
 
 export default function Reports() {
+  const { data: departments, loading: loadingdepartments } = useFetch('/departments');
+  const { data: reportSeries, loading: loadingreportSeries } = useFetch('/reportseries');
+  if (loadingdepartments || loadingreportSeries) return <div className="p-8 text-slate-500">Loading data...</div>;
+
   const [exported, setExported] = useState(false);
   const totalAdmissions = reportSeries.reduce((sum, item) => sum + item.admissions, 0);
   const totalDischarges = reportSeries.reduce((sum, item) => sum + item.discharges, 0);

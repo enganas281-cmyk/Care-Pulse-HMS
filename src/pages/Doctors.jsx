@@ -1,6 +1,6 @@
 import ModulePage from "../components/ModulePage.jsx";
 import StatusBadge from "../components/ui/StatusBadge.jsx";
-import { doctors } from "../data/mockData.js";
+import useFetch from "../utils/useFetch.js";
 
 const columns = [
   { key: "name", label: "Doctor", render: (row) => <span className="font-bold text-ink dark:text-white">{row.name}</span> },
@@ -11,6 +11,9 @@ const columns = [
 ];
 
 export default function Doctors() {
+  const { data: doctors, loading: loadingdoctors } = useFetch('/doctors');
+  if (loadingdoctors) return <div className="p-8 text-slate-500">Loading data...</div>;
+
   return (
     <ModulePage
       action="Add Doctor"

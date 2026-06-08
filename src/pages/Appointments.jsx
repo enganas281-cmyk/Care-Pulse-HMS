@@ -1,6 +1,6 @@
 import ModulePage from "../components/ModulePage.jsx";
 import StatusBadge from "../components/ui/StatusBadge.jsx";
-import { appointments } from "../data/mockData.js";
+import useFetch from "../utils/useFetch.js";
 
 const columns = [
   { key: "time", label: "Time", render: (row) => <span className="font-bold text-ink">{row.time}</span> },
@@ -12,6 +12,9 @@ const columns = [
 ];
 
 export default function Appointments() {
+  const { data: appointments, loading: loadingappointments } = useFetch('/appointments');
+  if (loadingappointments) return <div className="p-8 text-slate-500">Loading data...</div>;
+
   return (
     <ModulePage
       action="Book Visit"

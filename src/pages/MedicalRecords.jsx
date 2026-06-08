@@ -1,6 +1,6 @@
 import ModulePage from "../components/ModulePage.jsx";
 import StatusBadge from "../components/ui/StatusBadge.jsx";
-import { medicalRecords } from "../data/mockData.js";
+import useFetch from "../utils/useFetch.js";
 
 const columns = [
   { key: "id", label: "Record ID" },
@@ -12,6 +12,9 @@ const columns = [
 ];
 
 export default function MedicalRecords() {
+  const { data: medicalRecords, loading: loadingmedicalRecords } = useFetch('/medicalrecords');
+  if (loadingmedicalRecords) return <div className="p-8 text-slate-500">Loading data...</div>;
+
   return (
     <ModulePage
       action="Add Record"

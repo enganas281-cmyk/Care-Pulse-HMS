@@ -1,4 +1,5 @@
 import { Navigate, Route, Routes } from "react-router-dom";
+import { useAuth } from "./auth/AuthContext.jsx";
 import AppLayout from "./layouts/AppLayout.jsx";
 import Admissions from "./pages/Admissions.jsx";
 import Ambulance from "./pages/Ambulance.jsx";
@@ -16,11 +17,15 @@ import Reports from "./pages/Reports.jsx";
 import Rooms from "./pages/Rooms.jsx";
 import Settings from "./pages/Settings.jsx";
 import Staff from "./pages/Staff.jsx";
+import Login from "./pages/Login.jsx";
 
 export default function App() {
+  const { currentUser } = useAuth();
+
   return (
     <Routes>
-      <Route path="/" element={<AppLayout />}>
+      <Route path="/login" element={<Login />} />
+      <Route path="/" element={currentUser ? <AppLayout /> : <Navigate to="/login" replace />}>
         <Route index element={<Dashboard />} />
         <Route path="patients" element={<Patients />} />
         <Route path="appointments" element={<Appointments />} />

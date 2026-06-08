@@ -1,9 +1,13 @@
 import { NavLink } from "react-router-dom";
 import { Cross, ShieldCheck } from "lucide-react";
+import { useAuth } from "../auth/AuthContext.jsx";
 import { navigation } from "../routes/navigation.js";
 import { classNames } from "../utils/formatters.js";
 
 export default function Sidebar({ open, onClose }) {
+  const { currentUser } = useAuth();
+  const visibleNavigation = navigation.filter((item) => item.roles.includes(currentUser?.role));
+
   return (
     <>
       <div
@@ -29,7 +33,7 @@ export default function Sidebar({ open, onClose }) {
           </div>
         </div>
         <nav className="flex-1 space-y-1 overflow-y-auto px-3 py-4 scrollbar-thin">
-          {navigation.map(({ label, path, icon: Icon }) => (
+          {visibleNavigation.map(({ label, path, icon: Icon }) => (
             <NavLink
               className={({ isActive }) =>
                 classNames(
@@ -54,7 +58,7 @@ export default function Sidebar({ open, onClose }) {
             <ShieldCheck size={18} />
             Secure Front Desk
           </div>
-          <p className="mt-2 text-sm text-clinic-900/70">Role-based UI mockup with static demo records.</p>
+          <p className="mt-2 text-sm text-clinic-900/70 dark:text-clinic-100/70">{currentUser?.role} access enabled.</p>
         </div>
       </aside>
     </>

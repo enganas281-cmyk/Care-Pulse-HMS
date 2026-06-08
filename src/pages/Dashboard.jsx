@@ -2,10 +2,18 @@ import { Activity, AlertTriangle, BedDouble, CalendarDays, Clock3, HeartPulse } 
 import MetricCard from "../components/ui/MetricCard.jsx";
 import ProgressBar from "../components/ui/ProgressBar.jsx";
 import StatusBadge from "../components/ui/StatusBadge.jsx";
-import { alerts, appointments, departments, patients, reportSeries, stats } from "../data/mockData.js";
+import useFetch from "../utils/useFetch.js";
 import { quickActions } from "../routes/navigation.js";
 
 export default function Dashboard() {
+  const { data: alerts, loading: loadingalerts } = useFetch('/alerts');
+  const { data: appointments, loading: loadingappointments } = useFetch('/appointments');
+  const { data: departments, loading: loadingdepartments } = useFetch('/departments');
+  const { data: patients, loading: loadingpatients } = useFetch('/patients');
+  const { data: reportSeries, loading: loadingreportSeries } = useFetch('/reportseries');
+  const { data: stats, loading: loadingstats } = useFetch('/stats');
+  if (loadingalerts || loadingappointments || loadingdepartments || loadingpatients || loadingreportSeries || loadingstats) return <div className="p-8 text-slate-500">Loading data...</div>;
+
   const maxAdmissions = Math.max(...reportSeries.map((item) => item.admissions));
 
   return (

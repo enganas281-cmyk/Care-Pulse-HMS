@@ -1,6 +1,6 @@
 import ModulePage from "../components/ModulePage.jsx";
 import StatusBadge from "../components/ui/StatusBadge.jsx";
-import { labTests } from "../data/mockData.js";
+import useFetch from "../utils/useFetch.js";
 
 const columns = [
   { key: "id", label: "Lab ID" },
@@ -12,6 +12,9 @@ const columns = [
 ];
 
 export default function Laboratory() {
+  const { data: labTests, loading: loadinglabTests } = useFetch('/labtests');
+  if (loadinglabTests) return <div className="p-8 text-slate-500">Loading data...</div>;
+
   return (
     <ModulePage
       action="Order Test"

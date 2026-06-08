@@ -1,6 +1,6 @@
 import ModulePage from "../components/ModulePage.jsx";
 import StatusBadge from "../components/ui/StatusBadge.jsx";
-import { invoices } from "../data/mockData.js";
+import useFetch from "../utils/useFetch.js";
 import { currency } from "../utils/formatters.js";
 
 const columns = [
@@ -12,6 +12,9 @@ const columns = [
 ];
 
 export default function Billing() {
+  const { data: invoices, loading: loadinginvoices } = useFetch('/invoices');
+  if (loadinginvoices) return <div className="p-8 text-slate-500">Loading data...</div>;
+
   return (
     <ModulePage
       action="New Invoice"

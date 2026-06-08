@@ -1,6 +1,6 @@
 import ModulePage from "../components/ModulePage.jsx";
 import ProgressBar from "../components/ui/ProgressBar.jsx";
-import { departments } from "../data/mockData.js";
+import useFetch from "../utils/useFetch.js";
 
 const columns = [
   { key: "name", label: "Department", render: (row) => <span className="font-bold text-ink">{row.name}</span> },
@@ -11,6 +11,9 @@ const columns = [
 ];
 
 export default function Departments() {
+  const { data: departments, loading: loadingdepartments } = useFetch('/departments');
+  if (loadingdepartments) return <div className="p-8 text-slate-500">Loading data...</div>;
+
   return (
     <ModulePage
       action="Add Unit"
